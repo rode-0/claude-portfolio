@@ -9,30 +9,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
-        {project.imageUrl ? (
-          <img
-            src={project.imageUrl}
-            alt={project.title}
-            className={styles.image}
-          />
-        ) : (
-          <div className={styles.imagePlaceholder}>
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="M21 15l-5-5L5 21" />
-            </svg>
-          </div>
-        )}
+        <div className={styles.imagePlaceholder}>
+          <span className={styles.placeholderIcon}>
+            {project.techStack[0] === 'Docker' ? '🐳' :
+             project.techStack[0] === 'PostgreSQL' ? '🗄️' :
+             project.techStack[0] === 'TypeScript' ? '⚡' :
+             project.techStack[0] === 'React' ? '⚛️' :
+             project.techStack[0] === 'Python' ? '🐍' :
+             project.techStack[0] === 'Jest' ? '✅' : '💻'}
+          </span>
+          <span className={styles.placeholderTitle}>{project.title}</span>
+        </div>
       </div>
 
       <div className={styles.body}>
